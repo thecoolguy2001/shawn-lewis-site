@@ -190,12 +190,8 @@ h1, h2, h3 { font-weight: 600; letter-spacing: -0.015em; line-height: 1.07; text
   padding: 5px 12px; border-radius: 980px; white-space: nowrap;
 }
 
-/* Apparel: black garment with the print on the chest */
-.garment { position: relative; height: 100%; aspect-ratio: 1; max-width: 100%; }
-.garment svg { width: 100%; height: 100%; filter: drop-shadow(0 14px 22px rgba(0, 0, 0, 0.22)); }
-.garment .print { position: absolute; left: 50%; transform: translateX(-50%); }
-.garment.tee .print { top: 34%; width: 36%; }
-.garment.hoodie .print { top: 43%; width: 31%; }
+/* Apparel mockups (rendered images with the print on the chest) */
+.tile .media img.garment-img { height: 100%; width: auto; max-width: 100%; object-fit: contain; }
 
 .size-select {
   font: inherit; font-size: 0.9rem;
@@ -293,3 +289,4 @@ h1, h2, h3 { font-weight: 600; letter-spacing: -0.015em; line-height: 1.07; text
   .feature.about { grid-template-columns: 1fr; }
   .portrait-stage { position: static; }
 }
+.tile .media:has(.garment-img) { height: 300px; }
