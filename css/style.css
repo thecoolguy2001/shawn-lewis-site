@@ -113,7 +113,7 @@ h1, h2, h3 { font-weight: 600; letter-spacing: -0.015em; line-height: 1.07; text
 .light { background: var(--tile); }
 
 /* ---------- Home hero ---------- */
-.hero { padding-block: 84px 40px; }
+.hero { padding-block: 84px 130px; }
 .hero .headline { margin-bottom: 14px; }
 .hero-cover {
   width: min(360px, 72%);
@@ -121,7 +121,7 @@ h1, h2, h3 { font-weight: 600; letter-spacing: -0.015em; line-height: 1.07; text
   border-radius: 6px 12px 12px 6px;
   box-shadow: 0 40px 90px rgba(209, 164, 71, 0.18), 0 30px 60px rgba(0, 0, 0, 0.8);
 }
-.hero + .band { padding-top: 60px; }
+.hero + .band { padding-top: 0; }
 
 /* ---------- Video ---------- */
 .video-wrap {
