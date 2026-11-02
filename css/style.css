@@ -289,3 +289,24 @@ h1, h2, h3 { font-weight: 600; letter-spacing: -0.015em; line-height: 1.07; text
   .portrait-stage { position: static; }
 }
 #apparel .tile .media { height: 300px; }
+
+/* Audiobook sample player */
+.sample { width: 100%; }
+.sample-label { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--gray); margin-bottom: 8px; }
+.sample audio { width: 100%; height: 40px; display: block; }
+.tile .sample { margin-bottom: 4px; }
+.sample-feature { max-width: 420px; margin-top: 30px; }
+.dark .sample-label { color: #a1a1a6; }
+.prose p.soon-line { font-size: 0.95rem; margin-top: 6px; color: var(--gold); }
+.tile .actions { align-self: stretch; }
+
+/* Apparel: real model photos (Printful mockups) with front/side thumbnails */
+.tile .media img.model-img { height: 100%; width: auto; max-width: 100%; aspect-ratio: 1 / 1; object-fit: contain; }
+#apparel .tile .media.gallery { height: auto; flex-direction: column; gap: 12px; }
+#apparel .tile .media.gallery img.model-img { width: 100%; max-width: 340px; height: auto; }
+.thumbs { display: flex; gap: 10px; justify-content: center; }
+.thumb { width: 56px; height: 56px; padding: 0; border: 2px solid transparent; border-radius: 10px; overflow: hidden; background: none; cursor: pointer; opacity: 0.65; transition: opacity 0.2s, border-color 0.2s; }
+.thumb img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.thumb:hover, .thumb.active { opacity: 1; }
+.thumb.active { border-color: var(--gold); }
+.thumb:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
