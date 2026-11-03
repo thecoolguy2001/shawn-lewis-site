@@ -35,3 +35,7 @@ document.querySelectorAll(".media.gallery").forEach((g) => {
     });
   });
 });
+
+// Contact form: show confirmation after FormSubmit redirects back with ?sent=1
+var sent = document.getElementById('form-sent');
+if (sent && new URLSearchParams(location.search).get('sent') === '1') sent.hidden = false;

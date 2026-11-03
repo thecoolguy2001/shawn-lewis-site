@@ -310,3 +310,4 @@ h1, h2, h3 { font-weight: 600; letter-spacing: -0.015em; line-height: 1.07; text
 .thumb:hover, .thumb.active { opacity: 1; }
 .thumb.active { border-color: var(--gold); }
 .thumb:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.form-sent { margin-top: 14px; text-align: center; color: var(--gold); font-weight: 600; }
