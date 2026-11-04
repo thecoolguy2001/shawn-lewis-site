@@ -178,7 +178,9 @@ h1, h2, h3 { font-weight: 600; letter-spacing: -0.015em; line-height: 1.07; text
   font-weight: 700; font-size: 1.15rem; letter-spacing: 0.04em; text-transform: uppercase; line-height: 1.1;
   box-shadow: 0 16px 30px rgba(0, 0, 0, 0.25);
 }
-.soon-cover small { font-size: 0.6rem; letter-spacing: 0.2em; color: var(--gold); margin-top: 14px; font-weight: 600; }
+.soon-cover { position: relative; }
+.soon-cover small { position: absolute; left: 0; right: 0; bottom: 8%; text-align: center; font-size: 0.68rem; letter-spacing: 0.2em; color: var(--gold); font-weight: 600; }
+.tile .volume { font-size: 0.95rem; font-weight: 600; color: var(--gold); letter-spacing: 0.04em; margin-top: 4px; }
 
 /* Audiobook: cover with a small badge */
 .audio { position: relative; height: 100%; }
