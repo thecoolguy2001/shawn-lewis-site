@@ -39,3 +39,29 @@ document.querySelectorAll(".media.gallery").forEach((g) => {
 // Contact form: show confirmation after FormSubmit redirects back with ?sent=1
 var sent = document.getElementById('form-sent');
 if (sent && new URLSearchParams(location.search).get('sent') === '1') sent.hidden = false;
+
+// Contact form: send in the background; if the form service is down, offer a prefilled email instead.
+var form = document.querySelector('.contact-form');
+if (form && window.fetch) {
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var btn = form.querySelector('button[type=submit]');
+    var ok = document.getElementById('form-sent'), err = document.getElementById('form-error');
+    ok.hidden = true; err.hidden = true;
+    btn.disabled = true; btn.textContent = 'Sending...';
+    var data = new FormData(form);
+    var ctrl = window.AbortController ? new AbortController() : null;
+    var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 15000);
+    fetch(form.action.replace('formsubmit.co/', 'formsubmit.co/ajax/'), {
+      method: 'POST', body: data, headers: { Accept: 'application/json' }, signal: ctrl ? ctrl.signal : undefined
+    }).then(function (r) { return r.json(); }).then(function (j) {
+      if (j && (j.success === true || j.success === 'true')) { ok.hidden = false; form.reset(); }
+      else throw new Error('failed');
+    }).catch(function () {
+      var body = data.get('message') + '\n\n' + data.get('name') + ' (' + data.get('email') + ')';
+      document.getElementById('form-mailto').href = 'mailto:mlewis564@gmail.com?subject=' +
+        encodeURIComponent(data.get('subject') || 'Message from thespiritualchosen.com') + '&body=' + encodeURIComponent(body);
+      err.hidden = false;
+    }).finally(function () { clearTimeout(timer); btn.disabled = false; btn.textContent = 'Send message'; });
+  });
+}
