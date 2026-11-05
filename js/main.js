@@ -49,6 +49,8 @@ if (form && window.fetch) {
     var ok = document.getElementById('form-sent'), err = document.getElementById('form-error');
     ok.hidden = true; err.hidden = true;
     btn.disabled = true; btn.textContent = 'Sending...';
+    var topic = form.querySelector('[name=topic]').value.trim();
+    form.querySelector('[name=_subject]').value = topic ? 'Website message: ' + topic : 'New message from thespiritualchosen.com';
     var data = new FormData(form);
     var ctrl = window.AbortController ? new AbortController() : null;
     var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 15000);
@@ -60,7 +62,7 @@ if (form && window.fetch) {
     }).catch(function () {
       var body = data.get('message') + '\n\n' + data.get('name') + ' (' + data.get('email') + ')';
       document.getElementById('form-mailto').href = 'mailto:mlewis564@gmail.com?subject=' +
-        encodeURIComponent(data.get('subject') || 'Message from thespiritualchosen.com') + '&body=' + encodeURIComponent(body);
+        encodeURIComponent(data.get('topic') || 'Message from thespiritualchosen.com') + '&body=' + encodeURIComponent(body);
       err.hidden = false;
     }).finally(function () { clearTimeout(timer); btn.disabled = false; btn.textContent = 'Send message'; });
   });
