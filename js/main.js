@@ -52,10 +52,10 @@ if (form && window.fetch) {
     var data = new FormData(form);
     var ctrl = window.AbortController ? new AbortController() : null;
     var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 15000);
-    fetch(form.action.replace('formsubmit.co/', 'formsubmit.co/ajax/'), {
+    fetch(form.action, {
       method: 'POST', body: data, headers: { Accept: 'application/json' }, signal: ctrl ? ctrl.signal : undefined
-    }).then(function (r) { return r.json(); }).then(function (j) {
-      if (j && (j.success === true || j.success === 'true')) { ok.hidden = false; form.reset(); }
+    }).then(function (r) {
+      if (r.ok) { ok.hidden = false; form.reset(); }
       else throw new Error('failed');
     }).catch(function () {
       var body = data.get('message') + '\n\n' + data.get('name') + ' (' + data.get('email') + ')';
